@@ -7,6 +7,11 @@ import {
   getAllCustomers,
 } from '../../api/fetchApi'
 
+import {
+  fetchProductById,
+  fetchPageProducts
+} from '../../api/fetchLuizaLabsApi'
+
 // Components
 import Home  from './Home'
 
@@ -24,6 +29,7 @@ export const HomeContainer = (props: HomeContainerProps) => {
 
   const [customers, setCustomers] =  useState<any>(null)
   const [products, setProducts] = useState<any>(null)
+  const [pageProducts, setPageProducts] = useState<any>(null)
 
   const getCustomerList = async (): Promise<void> => {
     const customerList = (await getAllCustomers()).data
@@ -35,7 +41,12 @@ export const HomeContainer = (props: HomeContainerProps) => {
     setCustomers(productList)
   }
 
-  const createCustomerList = async (name: string): Promise<any> => {
+  const getPageProducts = async (pageId: number): Promise<void> => {
+    const productsPage = (await fetchPageProducts(pageId)).data
+    setPageProducts(productsPage?.products)
+  }
+
+  const createCustomerList = async (name: string): Promise<void> => {
     const randomEmail = faker.internet.email({firstName: name});
 
     const formatedData = { name,  email: randomEmail }
@@ -44,14 +55,22 @@ export const HomeContainer = (props: HomeContainerProps) => {
     getCustomerList()
   }
 
+  const createListProductByCustomer = () => {
+
+  }
+
   useEffect( () => {
     if(!customers)
       getCustomerList()
+
+    if(!pageProducts)
+      getPageProducts(1)
   }, [])
 
   return (
     <Home
       customers={customers}
+      pageProducts={pageProducts}
       onAddCustomer={createCustomerList}
     />
   )

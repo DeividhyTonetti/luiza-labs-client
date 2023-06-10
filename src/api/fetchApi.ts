@@ -9,29 +9,27 @@ type CreateUserProps = {
 }
 
 export const createCustomer = async ({ name, email}: CreateUserProps) => {
+  const url = `${BASE_URL}/customers/`
+  
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email })
   }
 
-  let response
-  let data
-  let error
-
   try {
-    response = await fetch(`${BASE_URL}/customers/`, requestOptions)
-    data = await response.json()
-    error = false
-  } catch {
-    data = null
-    error = true
-  }
+    const response = await fetch(url, requestOptions)
+    const data = await response.json()
+    const error = false
 
-  return { response, data, error }
+    return {response, data, error}
+  } catch {
+    return { response: null, data: null, error: true };
+  }
 }
 
 export const createProduct = async (pokemonId: number | null, teamName: string | null) => {
+  const url = `${BASE_URL}/addPokemon/`
 
   const requestOptions = {
     method: 'POST',
@@ -42,94 +40,74 @@ export const createProduct = async (pokemonId: number | null, teamName: string |
     })
   }
 
-  let response
-  let data
-  let error
-
   try {
-    response = await fetch(`${BASE_URL}/addPokemon/`, requestOptions)
-    data = await response.json()
-    error = false
+    const response = await fetch(url, requestOptions)
+    const data = await response.json()
+    const error = false
+
+    return { response, data, error }
   } catch {
-    data = null
-    error = true
+    return { response: null, data: null, error: true };
   }
 
-  return { response, data, error }
 }
 
 export const getAllProductsByUserId = async (customerId: number) => {
-
-  let response
-  let data: any | null
-  let error
+  const url = `${BASE_URL}/getAllTeams/`
 
   try {
-    response = await fetch(`${BASE_URL}/getAllTeams/`)
-    data = await response.json()
-    error = false
-  } catch {
-    data = null
-    error = true
-  }
+    const response = await fetch(url)
+    const data = await response.json()
+    const error = false
 
-  return { response, data, error }
+    return { response, data, error }
+  } catch {
+    return { response: null, data: null, error: true };
+  }
 }
 
 export const getAllCustomers= async () => {
-
-  let response
-  let data: any | null
-  let error
+  const url = `${BASE_URL}/customers/`
 
   try {
-    response = await fetch(`${BASE_URL}/customers/`)
-    data = await response.json()
-    error = false
-  } catch {
-    data = null
-    error = true
-  }
+    const response = await fetch(url)
+    const data = await response.json()
+    const error = false
 
-  return { response, data, error }
+    return { response, data, error }
+  } catch {
+    return { response: null, data: null, error: true };
+  }
 }
 
 export const removeCustomer = async (teamId: string) => {
-
-  let response
-  let data: any | null
-  let error
+  const url = `${BASE_URL}/removePokemon/${teamId}`
 
   try {
-    response = await fetch(`${BASE_URL}/removePokemon/${teamId}`, {
+    const response = await fetch(url, {
       method: 'DELETE'
     })
-    data = await response.json()
-    error = false
-  } catch {
-    data = null
-    error = true
-  }
+    const data = await response.json()
+    const error = false
 
-  return { response, data, error }
+    return { response, data, error }
+  } catch {
+    return { response: null, data: null, error: true };
+  }
 }
 
 export const removeProduct = async (teamName: string) => {
-
-  let response
-  let data: any | null
-  let error
+  const url = `${BASE_URL}/removeTeam/${teamName}`
 
   try {
-    response = await fetch(`${BASE_URL}/removeTeam/${teamName}`, {
+    const response = await fetch(url, {
       method: 'DELETE'
     })
-    data = await response.json()
-    error = false
+    const data = await response.json()
+    const error = false
+    
+    return { response, data, error }
   } catch {
-    data = null
-    error = true
+    return { response: null, data: null, error: true };
   }
-
-  return { response, data, error }
 }

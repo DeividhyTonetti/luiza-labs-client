@@ -22,7 +22,8 @@ const Home = (props: any) => {
     <Grid justify="center" align="flex-start" ml={3} mr={3}>
       <Grid.Col span={12}>
         <Fields
-          customers={props.customers}
+          customers={props.customers || []}
+          pageProducts={props.pageProducts || []}
           onAddCustomer={props.onAddCustomer}
         />
       </Grid.Col>
@@ -50,7 +51,6 @@ const Home = (props: any) => {
           <FavoriteProductTable data={productData} />
         </Box>
       </Grid.Col>
-      {/* <ProductCard /> */}
     </Grid>
   )
 }

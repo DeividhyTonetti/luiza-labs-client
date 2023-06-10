@@ -17,16 +17,19 @@ const Fields = (props: any) => {
   const theme = useMantineTheme();
   const [value, setValue] = useState('');
 
-  const customerSelectData1 = props.customers?.map( (value: any) => {
+  const customerSelectData = props?.customers?.map( (value: any) => {
     return {
       value: value.id,
       label: value.name
     }
-  }) 
+  })
 
-  const customerSelectData: any = []
-
-  console.log(customerSelectData1)
+  const productsSelectData = props?.pageProducts?.map( (value: any) => {
+    return {
+      value: value.id,
+      label: value.title
+    }
+  })
 
   return (
     <Container size={420} my={40}>
@@ -73,18 +76,13 @@ const Fields = (props: any) => {
           label="Escolha o Cliente"
           placeholder="Escolha o Cliente"
           radius="xl"
-          data={customerSelectData1}
+          data={customerSelectData}
         />
         <Select
           label="Escolha o Produto"
           placeholder="Escolha o Produto"
           radius="xl"
-          data={[
-            { value: 'react', label: 'React' },
-            { value: 'ng', label: 'Angular' },
-            { value: 'svelte', label: 'Svelte' },
-            { value: 'vue', label: 'Vue' },
-          ]}
+          data={productsSelectData}
         />
         <Button fullWidth mt="xl" radius="xl">
           Adicionar ao Carrinho
