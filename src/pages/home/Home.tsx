@@ -5,7 +5,7 @@ import CustomerTable from '../../components/CustomerTable';
 import { Box } from '@mantine/core';
 import Fields from '../../components/Fields';
 
-const Home = () => {
+const Home = (props: any) => {
   const customerData = [{
     name: 'Deividhy',
     email: 'deividhytonetti@gmail.com',
@@ -21,32 +21,35 @@ const Home = () => {
   return (
     <Grid justify="center" align="flex-start" ml={3} mr={3}>
       <Grid.Col span={12}>
-        <Fields />
+        <Fields
+          customers={props.customers}
+          onAddCustomer={props.onAddCustomer}
+        />
       </Grid.Col>
       <Grid.Col span={6}>
         <Box
           sx={(theme) => ({
-            backgroundColor:'white',
+            backgroundColor: 'white',
             textAlign: 'center',
             padding: theme.spacing.xl,
             borderRadius: theme.radius.md,
           })}
         >
-          <CustomerTable data={customerData} /> 
+          <CustomerTable data={props.customers || []} />
         </Box>
       </Grid.Col>
       <Grid.Col span={6}>
         <Box
-            sx={(theme) => ({
-              backgroundColor:'white',
-              textAlign: 'center',
-              padding: theme.spacing.xl,
-              borderRadius: theme.radius.md,
-            })}
-          >
-            <FavoriteProductTable data={productData} /> 
-          </Box>
-        </Grid.Col>
+          sx={(theme) => ({
+            backgroundColor: 'white',
+            textAlign: 'center',
+            padding: theme.spacing.xl,
+            borderRadius: theme.radius.md,
+          })}
+        >
+          <FavoriteProductTable data={productData} />
+        </Box>
+      </Grid.Col>
       {/* <ProductCard /> */}
     </Grid>
   )

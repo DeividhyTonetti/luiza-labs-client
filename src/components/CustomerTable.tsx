@@ -2,6 +2,7 @@ import { Table, ScrollArea } from '@mantine/core';
 
 interface TableReviewsProps {
   data: {
+    id: string
     name: string;
     email: string;
   }[];
@@ -10,7 +11,7 @@ interface TableReviewsProps {
 const CustomerTable = ({ data }: TableReviewsProps) => {
   const rows = data.map((row) => {
     return (
-      <tr key={row.name}>
+      <tr key={row.id}>
         <td>
           {row.name}
         </td>

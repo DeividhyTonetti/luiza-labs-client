@@ -1,32 +1,32 @@
-import { useForm } from '@mantine/form';
-import { TextInput, Button, Group, Container, Grid } from '@mantine/core';
-import { randomId } from '@mantine/hooks';
+import React, { useState } from 'react';
+import { TextInput, Button, Container } from '@mantine/core';
 
 import { Select } from '@mantine/core';
 
-
 import {
-  PasswordInput,
-  Checkbox,
-  Anchor,
   Paper,
   Title,
   Text,
 } from '@mantine/core';
 
-import { TextInputProps, ActionIcon, useMantineTheme } from '@mantine/core';
+import { ActionIcon, useMantineTheme } from '@mantine/core';
 import { IconUserPlus, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
 
-const Fields = (props: TextInputProps) => {
+const Fields = (props: any) => {
 
   const theme = useMantineTheme();
+  const [value, setValue] = useState('');
 
-  const form = useForm({
-    initialValues: {
-      name: '',
-      email: '',
-    },
-  });
+  const customerSelectData1 = props.customers?.map( (value: any) => {
+    return {
+      value: value.id,
+      label: value.name
+    }
+  }) 
+
+  const customerSelectData: any = []
+
+  console.log(customerSelectData1)
 
   return (
     <Container size={420} my={40}>
@@ -45,8 +45,17 @@ const Fields = (props: TextInputProps) => {
         radius="xl"
         size="md"
         mt={20}
+        withAsterisk
+        value={value}
+        onChange={(event) => setValue(event.currentTarget.value)} 
         rightSection={
-          <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+          <ActionIcon 
+            size={32} 
+            radius="xl" 
+            color={theme.primaryColor} 
+            variant="filled"
+            onClick={() => props.onAddCustomer(value)}
+          >
             {theme.dir === 'ltr' ? (
               <IconArrowRight size="1.1rem" stroke={1.5} />
             ) : (
@@ -63,16 +72,13 @@ const Fields = (props: TextInputProps) => {
         <Select
           label="Escolha o Cliente"
           placeholder="Escolha o Cliente"
-          data={[
-            { value: 'react', label: 'React' },
-            { value: 'ng', label: 'Angular' },
-            { value: 'svelte', label: 'Svelte' },
-            { value: 'vue', label: 'Vue' },
-          ]}
+          radius="xl"
+          data={customerSelectData1}
         />
         <Select
           label="Escolha o Produto"
           placeholder="Escolha o Produto"
+          radius="xl"
           data={[
             { value: 'react', label: 'React' },
             { value: 'ng', label: 'Angular' },
@@ -80,7 +86,7 @@ const Fields = (props: TextInputProps) => {
             { value: 'vue', label: 'Vue' },
           ]}
         />
-        <Button fullWidth mt="xl">
+        <Button fullWidth mt="xl" radius="xl">
           Adicionar ao Carrinho
         </Button>
       </Paper>
