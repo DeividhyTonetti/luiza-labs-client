@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextInput, Button, Container } from '@mantine/core';
 
 import { Select } from '@mantine/core';
@@ -15,7 +15,8 @@ import { IconUserPlus, IconArrowRight, IconArrowLeft } from '@tabler/icons-react
 const Fields = (props: any) => {
 
   const theme = useMantineTheme();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string>('');
+  const [product, setProduct] = useState<any>(null);
 
   const customerSelectData = props?.customers?.map( (value: any) => {
     return {
@@ -77,14 +78,21 @@ const Fields = (props: any) => {
           placeholder="Escolha o Cliente"
           radius="xl"
           data={customerSelectData}
+          onChange={(value) => setProduct({customerId: value, ...product})}
         />
         <Select
           label="Escolha o Produto"
           placeholder="Escolha o Produto"
           radius="xl"
           data={productsSelectData}
+          onChange={(value) => setProduct({productId: value, ...product})}
         />
-        <Button fullWidth mt="xl" radius="xl">
+        <Button 
+          fullWidth 
+          mt="xl" 
+          radius="xl"
+          onClick={props.onAddProduct(product)}
+        >
           Adicionar ao Carrinho
         </Button>
       </Paper>

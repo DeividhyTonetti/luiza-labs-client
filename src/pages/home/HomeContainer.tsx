@@ -18,10 +18,6 @@ import Home  from './Home'
 // Models
 
 // Prototypes
-type PokemonInitialListProps = {
-  name: string
-  url: string
-}
 
 type HomeContainerProps = {}
 
@@ -55,8 +51,8 @@ export const HomeContainer = (props: HomeContainerProps) => {
     getCustomerList()
   }
 
-  const createListProductByCustomer = () => {
-
+  const createListProductByCustomer = async (data: any): Promise<void> => {
+    console.log(data)
   }
 
   useEffect( () => {
@@ -72,6 +68,7 @@ export const HomeContainer = (props: HomeContainerProps) => {
       customers={customers}
       pageProducts={pageProducts}
       onAddCustomer={createCustomerList}
+      onAddProduct={createListProductByCustomer}
     />
   )
 }

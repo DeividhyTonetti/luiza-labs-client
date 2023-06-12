@@ -25,6 +25,7 @@ const Home = (props: any) => {
           customers={props.customers || []}
           pageProducts={props.pageProducts || []}
           onAddCustomer={props.onAddCustomer}
+          onAddProduct={props.onAddProduct}
         />
       </Grid.Col>
       <Grid.Col span={6}>
