@@ -1,12 +1,12 @@
 <div align="center">
-  <img class="emojidex-emoji" align="center" src="https://vagas.byintera.com/wpcontent/uploads/2021/04/luizalabs.16165011971024x376.png" emoji-code="pikachu" alt="pikachu" />
+  <img class="emojidex-emoji" align="center" src="https://vagas.byintera.com/wp-content/uploads/2021/04/luiza-labs.1616501197-1024x376.png" emoji-code="LuizaLabs" alt="LuizaLabs" />
 </div>
 
 <h1 align="center">
 
   [Luiza Labs Client](https://pokemon-client-blush.vercel.app/)
   </h1>
-<p align="center"> Gerenciador de times de Pokémon </p>
+<p align="center"> Gerenciador de dados LuizaLabs </p>
 
 <div align="center">
   <img src="https://img.shields.io/static/v1?label=Licence&message=MIT&color=2874F0"/>
@@ -23,35 +23,39 @@
       * [Navegando entre diretórios](#navegacao)
       * [Criando variáveis de ambiente](#dotenv)
       * [Instalando as dependências](#dependencias)
-    *[Arquitetura](#arquitetura)
+   * [Arquitetura](#arquitetura)
    * [Tecnologias](#tecnologias)
    * [Trabalhos Futuros](#trabalhos-futuros)
    * [Observações](#trabalhos-futuros)
 <!--te-->
 
 <h4 align="center"> 
-	🚧  Pokédex 🚀 Em Fase Final...  🚧
+	🚧  Luiza Labs API 🚀 Em Fase Final...  🚧
 </h4>
 
 # Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com) => v2.25.1, 
-[Node.js](https://nodejs.org/en/) v16,
+[Node.js](https://nodejs.org/en/) v18.16,
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 # Instalação
 ## Clone este repositório
-$ git clone <https://github.com/DeividhyTonetti/pokemonServer.git>
+$ git clone [<https://github.com/DeividhyTonetti/pokemonServer.git>](https://github.com/DeividhyTonetti/luiza-labs-client.git)
 
 ## Navegue até a raiz do projeto via terminal terminal/cmd ou pelo VScode
 $ cd (diretórtio...)
 
 ## Crie um arquivo chamado .env na raiz do projeto e insira as seguintes variáveis de ambiente:
-    VITE_REACT_APP_API_DEVELOPMENT=http://localhost:3000
+  
+	VITE_REACT_APP_MODE=develop
 
-    VITE_REACT_APP_API_URL_PRODUCTION=https://pokemon-server.vercel.app
+	VITE_REACT_APP_API_URL_PRODUCTION = ''
+	VITE_REACT_APP_API_DEVELOPMENT=http://localhost:3000
 
-    VITE_REACT_APP_POKE_API_URL=https://pokeapi.co/api/v2
+	# External 
+	VITE_REACT_APP_LUIZA_LABS_API_DEVELOPMENT=http://challenge-api.luizalabs.com/api/product
+
  
 # Instale as dependências do projeto
 $ npm install
@@ -63,7 +67,7 @@ $ npm run dev
 Acesse no seu navegador
 
 # Arquitetura
-## Em nossa arquitetura, utilizamos o conceito de separação de responsabilidades, entre componentes de containers e de apresentção
+## Em nossa arquitetura, utilizamos o conceito de separação de responsabilidades, entre componentes de containers e de apresentação
 
 * Os componentes de container são responsáveis por gerenciar o estado e a lógica de negócios da aplicação
 * Por outro lado, os componentes de apresentação são responsáveis por renderizar a interface do usuário com base no estado e nos dados fornecidos pelos componentes de container. Eles geralmente não têm lógica de negócios e geralmente são reutilizáveis em diferentes partes da aplicação. Os componentes de apresentação são semelhantes às visões do padrão MVC, que são responsáveis por exibir os dados ao usuário.
@@ -82,14 +86,10 @@ As seguintes ferramentas e bibliotecas foram usadas na construção do projeto:
 
 ### Trabalhos Futuros (Next Features)
 * Incluir a documentação dos componentes através do storybook
-* Incluir um search funcional
-* Incluir uma pré-visualização das informação dos pokémons
-* Incluir um loading infinito
-* Incluir tratamento de erros para o usuário
-* Melhorar o loading das páginas
+* Incluir Testes E2E com Cypress
 
 ### Observações
-Este projeto front-end, tem como principal intuito ser simples, e criar uma pokédex. Para ver o funcionamento basta entrar https://pokemon-client-blush.vercel.app/
+Este projeto front-end, tem como principal intuito ser simples, VISUALIZAR A API. Para ver o funcionamento basta entrar https://pokemon-client-blush.vercel.app/
 
 ### Autor
 ---
