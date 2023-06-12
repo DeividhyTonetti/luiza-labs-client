@@ -30,7 +30,7 @@
 <!--te-->
 
 <h4 align="center"> 
-	🚧  Pokédex 🚀 Em Fase Final...  🚧
+	🚧  Luiza Labs API 🚀 Em Fase Final...  🚧
 </h4>
 
 # Pré-requisitos
